@@ -76,6 +76,10 @@ const {Product} = require('../models'); // Replace with the actual path to your 
     }
   };
   
+
+
+  // Export the controller functions
+  
   module.exports = {
     getAllProducts,
     getProductById,

@@ -9,7 +9,7 @@ const morgan = require('morgan');
 // Import the routes
 const products = require('./routes/products');
 const customer = require('./routes/customer');
-const manufacturer = require('./routes/manufacturer');
+const manufacturer = require('./routes/agent');
 const order = require('./routes/order');
 const orderItem = require('./routes/orderItem');
 const category = require('./routes/category');

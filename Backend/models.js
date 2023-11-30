@@ -48,7 +48,7 @@ const manufacturerSchema = new mongoose.Schema({
 
 // Products Schema
 const productSchema = new mongoose.Schema({
-  productName: { type: String, required: true },
+  productName: { type: String, required: true, },
   description: { type: String },
   price: { type: Number, required: true },
   stockQuantity: { type: Number, required: true },

@@ -11,10 +11,11 @@ const getAllCategories = async (req, res) => {
 
 const registerCategories = async (req, res) => {
     
-        const { categoryName } = req.body;
+    
+        const { category } = req.body;
         try {
         const product = new Category({
-            categoryName
+            categoryName:category
         });
         await product.save();
         res.status(201).json(product);

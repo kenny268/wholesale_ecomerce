@@ -99,26 +99,12 @@ const getAllAdminsById = async (req, res) => {
 const updateAdmins = async (req, res) => {
     const { name, email,phone } = req.body;
     try {
-
-        //check if user already exists
-        const user = await Admin.findOne({ email: email});
-
-        if(!user){
-            return res.status(400).json({'message':'user does not exixt'})
-        }
-        
-        if (user.email === email) {
-            return res.status(400).json({'msg': 'Email already exists'});
-        }else if(user.adminName === name){
-            return res.status(400).json({'msg': 'Name already exists'});
-        }else if(user.phone === phone){
-            return res.status(400).json({'msg': 'Phone already exists'});
-        }
       
         //check username already exists
         const admin = await Admin.findByIdAndUpdate(req.params.id, {
         name,
         email,
+        phone,
         isverified: false,
 
         });
@@ -126,7 +112,7 @@ const updateAdmins = async (req, res) => {
         await admin.save();
 
         // verification email
-        const tokenCode = jwt.sign({ email }, process.env.JWT_SECRET, {
+        const tokenCode = jwt.sign({adminEmail:email }, process.env.JWT_SECRET, {
             expiresIn: '1h',
         });
         const CLIENT_URL = 'http://localhost:3000/admin';
@@ -158,9 +144,9 @@ const updateAdmins = async (req, res) => {
             res.status(500).json({ error: error.message });
         }
 
-        res.status(201).json(product);
+        
     } catch (error) {
-        res.status(500).json({ error: `${error.message}`});
+        res.status(500).json({ error: error.message });
     }
     }
 
@@ -174,27 +160,45 @@ const deleteAdmins = async (req, res) => {
 }
 
 const loginAdmins = async (req, res) => {
+    const { email, password } = req.body;
+  
     try {
-        const { adminEmail, adminPassword } = req.body;
-        const admin = await Admin.findOne({ adminEmail: adminEmail });
-        if (admin && (await bcrypt.compare(adminPassword, admin.adminPassword))) {
-            const token = jwt.sign(
-                { adminId: admin._id, adminEmail: admin.adminEmail },
-                process.env.JWT_SECRET,
-                {
-                    expiresIn: "2d",
-                }
-            );
-            return res.status(200).json({
-                message: "Login successful",
-                token: token,
-            });
-        }
-        res.status(401).json({
-            message: "Invalid email or password",
-        });
+    // Find the admin by email
+    const admin = await Admin.findOne({ email });
+
+    // If the admin doesn't exist, return an error
+    if (!admin) {
+    return res.status(404).json({ error: 'Customer not found' });
+    }
+
+    // If the admin is not verified, return an error
+    if (!admin.isverified) {
+        return res.status(401).json({ error: 'Please verify your email' });
+    }
+    // If the customer exists, check if the password is correct
+    if (!password)  {
+        return res.status(400).json({ error: 'Password a is required' });
+    }
+    if(password.length < 6){
+        return res.status(400).json({ error: 'Password must be at least 6 characters' });
+    }
+    
+  
+    // Verify the provided password against the hashed password in the database
+    const passwordMatch = await verifyPassword(password, admin.password);
+
+    if (!passwordMatch) {
+    return res.status(401).json({ error: 'Invalid password' });
+    }
+
+    // Password is correct, you can generate a token or session for authentication
+    const token = jwt.sign({ customerId: admin.email }, process.env.JWT_SECRET, {
+        expiresIn: '1d',
+    });
+
+    res.status(200).json({ message: 'Login successful',token });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+      res.status(500).json({ error: error.message });
     }
 }
 
@@ -210,8 +214,11 @@ const verifyEmail = async (req, res) => {
         // Verify the JWT token
         const payload = jwt.verify(token, process.env.JWT_SECRET);
 
+        console.log(payload)
         // Find the customer with the token's email
         const admin = await Admin.findOne({ email: payload.adminEmail });
+
+        console.log(admin)
 
         // If the customer doesn't exist, return an error
         if (!admin) {
@@ -243,6 +250,7 @@ const forgotPassword = async (req, res) => {
         //check if email exists
         const admin = await Admin.findOne({ email });
 
+        
         if(!admin){
             return res.status(400).json({error:"user Does not exist"})
         }
@@ -292,17 +300,23 @@ const forgotPassword = async (req, res) => {
 }
 
 const resetPassword = async (req, res) => {
-    const { resetToken, newPassword } = req.body;
+    //Destructre password from request body
+    const { password } = req.body;
+    //Destructre password from params
+    const { resetToken } = req.params;
 
     if (resetToken) {
-        jwt.verify(resetToken, process.env.RESET_PASSWORD_KEY, async (err, decodedToken) => {
+        jwt.verify(resetToken, process.env.RESET_PASSWORD_KEY, async (err, decodedToken) => 
+        {
             if (err) {
                 return res.status(400).json({ error: 'Incorrect or expired link' });
             }
             const admin = await Admin.findOne({ _id: decodedToken._id });
+
             if (admin) {
-                const hash = await hashPassword(newPassword);
-                admin.adminPassword = hash;
+                const hash = await hashPassword(password);
+                
+                admin.password = hash;
                 await admin.save();
                 return res.status(200).json({ message: 'Password reset successful' });
             } else {
@@ -316,7 +330,11 @@ const resetPassword = async (req, res) => {
 
 const changePassword = async (req, res) => {
     const { oldPassword, newPassword } = req.body;
-    const admin = await Admin.findOne({ _id: req.user._id });
+    if(!req.user){
+        return res.json({mssg:"Not Authenticated"})
+    }
+    const {_id}= req.user._id
+    const admin = await Admin.findOne({ _id: _id });
 
    if(admin && (await verifyPassword(oldPassword, admin.adminPassword))){
        const hash = await hashPassword(newPassword);
@@ -341,7 +359,44 @@ const verifyToken = async (req, res) => {
     }
 }
 
+const authMiddleware = async (req, res, next) => {
+    // Get the token from the header
+    const { authorization } = req.headers;
 
+    console.log(authorization)
+    if(!authorization){
+        return res.json({mssg:"Not Authenticated"})
+    }
+    
+    const token = authorization.split(' ')[1];
+  
+    try {
+        // If there is no token, return an error
+        if (!token) {
+            return res.status(401).json({ error: 'You must be logged in.' });
+        }
+        // Verify the JWT
+        const payload = jwt.verify(token, process.env.JWT_SECRET)
+  
+        // If the JWT is invalid, return an error
+        if (!payload) {
+            return res.status(401).json({ error: 'You must be logged in.' });
+        }
+        // Find the admin with the token's email
+        const admin = await Admin.findOne({ email: payload.customerId });
+
+        // If the admin doesn't exist, return an error
+        if (!admin) {
+            return res.status(404).json({ error: 'Customer not found' });
+        }
+        // Set the admin on the req object
+        req.user = admin;
+        // Move to the next middleware
+        next();
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+  }
         
 
 
@@ -356,5 +411,6 @@ module.exports = {
     loginAdmins,
     forgotPassword,
     resetPassword,
-    changePassword
+    changePassword,
+    authMiddleware
 }

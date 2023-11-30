@@ -12,7 +12,7 @@ const getAllPaymentMethods = async (req, res) => {
 
 const registerPaymentMethods = async (req, res) => {
 
-    console.log(req.body)
+
     const { customerName,paymentType,cardNumber,expirationDate,cvv } = req.body;
     try {
         const product = new PaymentMethod({
@@ -22,6 +22,7 @@ const registerPaymentMethods = async (req, res) => {
             expirationDate,
             cvv
         });
+
         await product.save();
         res.status(201).json(product);
     } catch (error) {
@@ -74,3 +75,4 @@ module.exports = {
     updatePaymentMethodsById,
     deletePaymentMethodsById
 }
+//a4:02:b9:b3:12:1c

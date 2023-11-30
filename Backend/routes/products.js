@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const storeController = require('../Controllers/products_controllers'); // Replace with the actual path to your controller file
-
+const {authMiddleware}= require('../Controllers/manufacture_controllers')
 
 // Example routes
 
@@ -12,13 +12,13 @@ router.get('/', storeController.getAllProducts);
 router.get('/:id', storeController.getProductById);
 
 // Create a new product
-router.post('/', storeController.createProduct);
+router.post('/',authMiddleware,storeController.createProduct);
 
 // Update a product
-router.put('/:id', storeController.updateProduct);
+router.put('/:id',authMiddleware, storeController.updateProduct);
 
 // Delete a product
-router.delete('/products/:id', storeController.deleteProduct);
+router.delete('/products/:id', authMiddleware ,storeController.deleteProduct);
 
 
 module.exports = router;

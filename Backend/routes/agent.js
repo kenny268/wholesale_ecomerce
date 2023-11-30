@@ -11,5 +11,8 @@ router.delete('/:id', manufactureController.deleteManufactures);
 router.get('/verifyemail/:token', manufactureController.verifyEmail);
 router.post('/login', manufactureController.loginManufactures);
 router.put('/changepassword', manufactureController.changePassword);
+router.post('/forgotpassword', manufactureController.forgotPassword);
+router.put('/resetpassword/:token', manufactureController.resetPassword);
+
 
 module.exports = router;
