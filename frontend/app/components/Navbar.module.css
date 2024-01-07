@@ -1,0 +1,109 @@
+/* components/Navbar.module.css */
+.navbar {
+    display: flex;
+    flex-direction: column;
+    background-color: #ee8108;
+    color: white;
+  }
+  
+  .topNavbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .logo{
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    width: 360px;
+    height: 80px;
+    margin-right: 10px;
+    border-radius: 8px;
+  }
+  /* .logo p{
+    font-size: 2.5em;
+    font-weight: bold;
+  }
+   */
+ 
+.search {
+    display: flex;
+    align-items: center;
+    width:600px;
+    margin: 0 15px;
+    padding: 15px;
+  }
+  
+  .search input {
+    width: 70%;
+    padding: 14px;
+    border: none;
+    border-radius: 4px;
+  }
+
+  .search input::placeholder{
+    font-size: 1em;
+  }
+
+  .search input[placeholder]{
+    font-size: 1em;
+  }
+  .searchIcon {
+    margin-left: 7px;
+    cursor: pointer;
+    font-size: 25px;
+  }
+  
+  .icons {
+    display: flex;
+    gap: 30px;
+    font-size: 25px;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-right: 20px;
+  }
+  .icons p{
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+    }
+
+  
+  .bottomNavbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items:flex-start; /* Center items vertically in the bottom navbar */    
+}
+
+
+.bottomNavbar div span{
+    padding: 10px;
+    font-size: 1em;
+    font-weight: 450;    
+    cursor: pointer;
+    
+}
+.bottomNavbar  .categories{
+  vertical-align: baseline;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
+  color:aliceblue;
+}
+  
+  
+
+  .help,
+  .sell {
+    margin-left: auto; /* Push Help and Sell to the right */
+    padding: 10px;
+    font-size: 1em;
+    font-weight: 450;    
+    cursor: pointer;
+  }
+ 

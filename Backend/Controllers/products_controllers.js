@@ -1,9 +1,38 @@
+const { ObjectId } = require('mongoose').Types;
+
 const {Product} = require('../models'); // Replace with the actual path to your mongoose models file
 
   // Get all products
   const getAllProducts = async (req, res) => {
     try {
       const products = await Product.find();
+      res.json(products);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  };
+
+  // get all products by category
+  const getAllProductsByCategory = async (req, res) => {
+    const categoryId = req.params.id;
+
+    if (!ObjectId.isValid(categoryId)) {
+      return res.status(400).json({ error: 'There is nothing like that' });
+    }
+
+    try {
+      const products = await Product.find({categoryId});
+      res.json(products);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  };
+
+  // get all products by manufacturer
+  const getAllProductsByManufacturer = async (req, res) => {
+    const manufacturerId = req.params.id;
+    try {
+      const products = await Product.find({manufacturer: manufacturerId});
       res.json(products);
     } catch (error) {
       res.status(500).json({ error: error.message });
@@ -75,7 +104,11 @@ const {Product} = require('../models'); // Replace with the actual path to your 
       res.status(500).json({ error: error.message });
     }
   };
-  
+
+  // Get all products by search term
+
+  //const getAllProductsBySearchTerm = async (req, res) => {
+
 
 
   // Export the controller functions
@@ -86,6 +119,7 @@ const {Product} = require('../models'); // Replace with the actual path to your 
     createProduct,
     updateProduct,
     deleteProduct,
+    getAllProductsByCategory,
+    getAllProductsByManufacturer
+    
   };
-  
-  

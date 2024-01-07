@@ -54,6 +54,10 @@ const productSchema = new mongoose.Schema({
   stockQuantity: { type: Number, required: true },
   category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true },
   manufacturer: { type: mongoose.Schema.Types.ObjectId, ref: 'Manufacturer', required: true },
+  image: {
+    data: Buffer,
+    contentType: String, // Store the MIME type of the image
+  },
 });
 
 // Orders Schema

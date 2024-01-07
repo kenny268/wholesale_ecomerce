@@ -20,5 +20,11 @@ router.put('/:id',authMiddleware, storeController.updateProduct);
 // Delete a product
 router.delete('/products/:id', authMiddleware ,storeController.deleteProduct);
 
+// Get all products by category
+router.get('/category/:id', storeController.getAllProductsByCategory);
+
+// Get all products by manufacturer
+router.get('/manufacturer/:id',storeController.getAllProductsByManufacturer);
+
 
 module.exports = router;
