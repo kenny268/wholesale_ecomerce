@@ -1,0 +1,35 @@
+.mainContent {
+    padding: 20px;
+    width: 75%;
+    position: absolute;
+    top: 100px;
+    right: 0;
+    max-height: fit-content;
+    /* overflow-y: auto; */
+    
+  }
+
+.menuContent {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* Add additional styles for the cards or items */
+  }
+.overview{
+  /* width: fit-content; */
+  margin: auto;
+  width: 100%;
+}
+
+.overviewItems{
+  box-shadow: 4px 6spx 2px 0px rgba(0, 0, 0, 0.5);
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+  padding: 20px;
+  /* margin: auto; */
+  /* Add additional styles for the cards or items */
+}

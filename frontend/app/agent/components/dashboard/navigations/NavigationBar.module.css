@@ -1,0 +1,58 @@
+/* NavigationBar.module.css */
+.navbar {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto auto;
+  background-color: #ee8108;
+  color: #fff;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  align-items: center;
+  height: 100px;
+}
+
+.logo {
+  /* Add styles for your logo if needed */
+  margin: 0px; /* Example margin for spacing */
+}
+
+.bussinessName {
+  margin: 10px; /* Example margin for spacing */
+  text-align: center;
+}
+
+/* Add styles for icons if needed */
+.navbar svg {
+  margin-left: 10px; /* Example margin for spacing between icons */
+}
+.message {
+  margin-left: 10px; /* Example margin for spacing between icons */
+  font-size: 3em;
+  margin-right: 30px;
+}
+.notifications{
+  margin-left: 10px; /* Example margin for spacing between icons */
+  font-size: 3em;
+  margin-right: 25px;
+  gap: 10px;
+}
+.user {
+  margin-left: 10px; /* Example margin for spacing between icons */
+  font-size: 3em;
+  margin-right: 20px;
+}
+
+.displayMessage{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #000;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  /* display: none; */
+}
+.messagePage.show {
+  display: block;
+}

@@ -1,0 +1,31 @@
+.leftNavbar {
+    background-color: #e9993f;
+    padding: 20px;
+    position: fixed;
+    height: 100%;
+    width: 25%;
+    top: 100px;
+    overflow-y: auto;
+  }
+  .bar{
+    background-color: #e9993f;
+    border-radius: 2px;
+    padding: 5px;
+  }
+  .span{
+    color: #fff;
+    font-weight: 900;
+    font-size: 0.9em;
+    cursor: pointer;
+  }
+ 
+
+  .item{
+      padding: 10px;
+      text-align: left;
+      font-size: 1.5em;
+      font-weight: 300;
+      color: #fff;
+      cursor: pointer;
+
+  } 

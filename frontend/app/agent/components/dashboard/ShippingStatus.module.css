@@ -1,0 +1,47 @@
+.content{
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 20px;
+    background-color: #fff;
+
+}
+.h1{
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 1.5em;
+    text-align: center;
+    padding-bottom: 20px;
+}
+.tableContent{
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.tableData{
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 20px;
+    background-color: #fff;
+}
+.td{
+    padding: 10px;
+    text-align: center;
+}
+.status{
+    padding: 10px;
+    text-align: left;
+}
+
+.h2{
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 1.3em;
+    text-align: center;
+    
+}

@@ -1,0 +1,23 @@
+/* {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Raleway', sans-serif;
+  } */
+  @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap");
+  
+  .app {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
+    /* background-color: #f1b36c; */
+    font-family: "Montserrat", sans-serif;
+  }
+  
+  .mainContainer {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    height: 100%;
+    overflow: hidden;
+  }
+  

@@ -27,6 +27,10 @@ export const formReducer = (state,action)=>{
             return {
                 data:action.payload
             }
+        case 'NAVIGATION_BAR':
+            return {
+                steps:action.payload
+            }    
 
         default :
         return state

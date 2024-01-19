@@ -1,0 +1,67 @@
+/* TrackingInformation.module.css */
+
+.container {
+    max-width: 446px;
+    margin:20px auto;
+    width: 800px;
+  }
+  
+  .h1{
+    color: rgba(0, 0, 0, 0.8);
+    display: inline-block;
+    font-size: 24px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+  .formContainer {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    width: max-content;
+    
+  }
+  
+  .formLabel {
+    padding: 1px;
+    font-size: 1.3em;
+    color: #000;
+    font-weight: lighter;
+  }
+  
+  .inputField {
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #00000094;
+  
+  }
+  
+  .submitButton {
+    margin-left: 10px;
+    padding: 10px;
+    background: #e7713a;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1.2em;
+    
+  }
+  
+  .trackingInfoContainer {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    
+
+  }
+  .trackingInfoLabel {
+    padding: 1px;
+    font-size: 1.2em;
+    color: #000;
+    font-weight: bolder;
+  }
