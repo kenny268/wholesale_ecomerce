@@ -1,13 +1,19 @@
+'use client'
 // components/Navbar.js
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Navbar.module.css';
 import { FaSearch, FaShoppingCart, FaUser } from 'react-icons/fa';
 import { FiList } from "react-icons/fi";
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Navbar = () => {
+  const [showShortCut,setShowShortCut] = useState(false)
+  const toggleShowShortCut = () =>setShowShortCut(!showShortCut)
+
   return (
-    <div className={styles.navbar}>
+    <div>
+      <div className={styles.navbar}>
       {/* Top Navbar */}
       <div className={styles.topNavbar}>
         <div className={styles.logo}>
@@ -24,12 +30,11 @@ const Navbar = () => {
           <input type="text" placeholder="Search products..." />
           <span className={styles.searchIcon}><FaSearch /></span>
         </form>
-        <div className={styles.icons}>
-          <span className={styles.cartIcon}><FaShoppingCart/> <p>Cart</p></span>
-          <span className={styles.userIcon}><FaUser/> <p>Account</p></span>
+        <div className={styles.icons}>     
+          <Link className={styles.cartIcon} href="/products/cart"><FaShoppingCart/> <p>Cart</p></Link>
+          <span className={styles.userIcon} onClick={toggleShowShortCut}><FaUser/> <p>Account</p></span>
         </div>
       </div>
-
       {/* Bottom Navbar */}
       <div className={styles.bottomNavbar}>
         <div className={styles.bottomNavbarLeft}>
@@ -48,6 +53,34 @@ const Navbar = () => {
         </div>
       </div>
     </div>
+      {/* Shortcuts */}
+      {showShortCut &&<div className={styles.shortCuts}>
+        <ul className={styles.shortCutList}>
+          <li className={styles.shortCutItem}>
+            <Link className={styles.shortCutLink} href="/user/signup">
+              <p>Register</p>
+            </Link>
+          </li>
+          <li className={styles.shortCutItem}>
+            <Link className={styles.shortCutLink} href="/user/login">
+              <p>Login</p>
+            </Link>
+          </li>
+          <li className={styles.shortCutItem}>
+            <span className={styles.shortCutLink} href="/">
+              <p>Profile</p>
+            </span>
+          </li>
+          <li className={styles.shortCutItem}>
+            <span className={styles.shortCutLink} href="/">
+              <p>Logout</p>
+            </span>
+          </li>
+        </ul>
+      </div>}
+  </div>
+
+
   );
 };
 

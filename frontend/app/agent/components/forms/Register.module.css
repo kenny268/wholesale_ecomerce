@@ -1,0 +1,89 @@
+
+
+.Container{
+    display:block;
+    max-width: 400px;
+    margin: 102px auto;
+    
+    padding: 20px;
+    background-color: #f1b36c;
+    border-radius: 2px;
+    
+}
+.Container div{
+    display: inline-block;
+    width: 80%;
+    max-height: fit-content;
+    padding: 10px;
+    margin: auto;
+}
+
+.Container label{
+    font-size: 1.3em;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.Container input{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #000;
+    outline: none;
+}
+.Container input:focus{
+    border-bottom: 2px solid blue;
+}
+
+.Container textarea{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #000;
+    outline: none;
+}
+.Container button{
+    font-size: 1.5em;
+    display: block;
+    width: 100%;
+    padding: 6px;
+    border: none;
+    outline: none;
+    background-color: #624dbe;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* NavigationBar.module.css */
+.navbar {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto auto;
+    gap: 20px;
+    background-color: #ee8108;
+    color: #fff;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    align-items: center;
+    height: 100px;
+  }
+  
+  .logo {
+    /* Add styles for your logo if needed */
+    margin: 0px; /* Example margin for spacing */
+  }
+  .bussinessName {
+    margin: 10px auto; /* Example margin for spacing */
+    text-align: center;
+  }
+.bussinessName a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.8em;
+    font-weight:bold;
+    cursor: pointer;
+    margin-right: 20px;
+}
+  

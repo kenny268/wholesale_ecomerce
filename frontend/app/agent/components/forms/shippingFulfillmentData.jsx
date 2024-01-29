@@ -1,16 +1,43 @@
 'use client';
 import React,{useState} from 'react'
 import {useFormContext} from '../../context/hooks/useContextHooks'
+import styles from './Register.module.css'
+
 
 function ShippingFulfillmentData() {
     const {data,dispatch} = useFormContext();
     const [shippingFulfillmentData, setShippingFulfillmentData] = useState({
         shippingPolicies: '',
         fulfillmentProcess: '',
-        shippingCosts: '',
       });
     
-      const handleChange = (e) => {
+    const [validationErrors, setValidationErrors] = useState({});
+    const validateField = (fieldName, value) => {
+      switch (fieldName) {
+        case 'shippingPolicies':
+          return value.trim() !== '' ? null : 'Shipping Policy is required';
+        case 'fulfillmentProcess':
+          return value.trim() !== '' ? null : 'Fulfilment process is required';
+    
+        default:
+          return null;
+      }
+    };
+  
+    const validateFormData = () => {
+      const errors = {};
+  
+      for (const key in shippingFulfillmentData) {
+        const fieldError = validateField(key, shippingFulfillmentData[key]);
+        if (fieldError) {
+          errors[key] = fieldError;
+        }
+      }
+  
+      return errors;
+    };
+
+    const handleChange = (e) => {
         const { name, value } = e.target;
         setShippingFulfillmentData({
           ...shippingFulfillmentData,
@@ -20,14 +47,20 @@ function ShippingFulfillmentData() {
 
 
     const handleClick = () => {
+      const errors = validateFormData();
+      if (Object.keys(errors).length === 0) {
         dispatch({type:'CREATE_FORM',payload:{formData:data.formData,legalData:data.legalData,shippingFulfillmentData,steps:data.steps+1}});
+      }else{
+        setValidationErrors(errors);
+      }
     }
-    const handleClickPrev = () => {
-      dispatch({type:'CREATE_FORM',payload:{data,steps:data.steps-1}});
-    }
+    // const handleClickPrev = () => {
+    //   dispatch({type:'CREATE_FORM',payload:{data,steps:data.steps-1}});
+    // }
 
   return (
-    <div>
+    <>
+      <div className={styles.Container}>
         <div>
         <label htmlFor="shippingPolicies">Shipping Policies:</label>
         <textarea
@@ -36,8 +69,10 @@ function ShippingFulfillmentData() {
           value={shippingFulfillmentData.shippingPolicies}
           onChange={handleChange}
           required
-        />
-      </div>
+          style={{ borderColor: validationErrors.shippingPolicies ? 'red' : 'initial' }}
+          />
+          {validationErrors.shippingPolicies && <div style={{ color: 'red' }}>{validationErrors.shippingPolicies}</div>}
+        </div>
       <div>
         <label htmlFor="fulfillmentProcess">Fulfillment Process:</label>
         <textarea
@@ -46,25 +81,18 @@ function ShippingFulfillmentData() {
           value={shippingFulfillmentData.fulfillmentProcess}
           onChange={handleChange}
           required
-        />
-      </div>
-      <div>
-        <label htmlFor="shippingCosts">Shipping Costs:</label>
-        <input
-          type="text"
-          id="shippingCosts"
-          name="shippingCosts"
-          value={shippingFulfillmentData.shippingCosts}
-          onChange={handleChange}
-          required
-        />
-      </div>
+          style={{ borderColor: validationErrors.fulfillmentProcess ? 'red' : 'initial' }}
+          />
+          {validationErrors.fulfillmentProcess && <div style={{ color: 'red' }}>{validationErrors.fulfillmentProcess}</div>}
+        </div>
+    
 
       <div className="footer">
-        <button onClick={handleClickPrev}>Previous</button>
+        {/* <button onClick={handleClickPrev}>Previous</button> */}
         <button onClick={handleClick}>Next</button>
       </div>
     </div>
+    </>
   )
 }
 

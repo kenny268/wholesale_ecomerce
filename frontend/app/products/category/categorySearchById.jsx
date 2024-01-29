@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
-import ProductCard from './product'
-import styles from '@/app/category/prooduct.module.css';
+import ProductCard from '../product'
+import styles from '@/app/products/prooduct.module.css';
 
 
 function CategorySearch({products}) {

@@ -2,7 +2,7 @@
 // ProductCard.js
 
 import React from 'react';
-import styles from '@/app/category/prooduct.module.css';
+import styles from '@/app/products/prooduct.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation'
 
@@ -23,7 +23,7 @@ const ProductCard = ({ product }) => {
         
         // Implement your logic for redirecting to the product detail page
         router.push({
-            pathname: '/category/description', // Specify the destination route
+            pathname: '/products/description', // Specify the destination route
             query: {productData}, // Pass data in the query object
         });
     };

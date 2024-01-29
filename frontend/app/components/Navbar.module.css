@@ -67,10 +67,26 @@
     padding-right: 20px;
   }
   .icons p{
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 500;
     color: #fff;
     }
+
+  .icons a{
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 500;
+  }
+
+  .icons span{
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 500;
+  }
 
   
   .bottomNavbar {
@@ -106,4 +122,51 @@
     font-weight: 450;    
     cursor: pointer;
   }
- 
+ .shortCuts{
+  position: fixed;
+  top: 90px;
+  right: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  font-size: 1em;
+  font-weight: 450;    
+  width: 200px;
+  background-color: #ee8108;
+  border-radius: 4px;
+ }
+ .shortCutList{
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   
+ }
+ .shortCutItem{
+   padding: 10px;
+   font-size: 1em;
+   font-weight: 450;    
+   cursor: pointer;
+ }
+ .shortCutItem a{
+   text-decoration: none;
+   color: #fff;
+   font-size: 1.4em;
+   font-weight: 500;
+ }
+ .shortCutItem a:hover{
+   color: #fff;
+   font-size: 1.5em;
+   font-weight: 800;
+ }
+ .shortCutItem span{
+   color: #fff;
+   font-size: 1.4em;
+   font-weight: 500;    
+   cursor: pointer;
+ }
+ .shortCutItem span:hover{
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: 800;
+}

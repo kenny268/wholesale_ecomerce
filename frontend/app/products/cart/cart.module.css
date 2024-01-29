@@ -1,0 +1,115 @@
+/* ShoppingCart.module.css */
+
+.header {
+    background-color: #ee8108;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.397);
+  }
+  
+  .productRow {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    max-width: 100%;
+  }
+  
+  .productImage {
+    max-width: 70px;
+    max-height: 100px;
+    padding: 3px;
+    flex: 1;
+  }
+  
+  .productDetails {
+    display: flex;
+    flex: 3;
+    flex-direction: row;
+  }
+  
+  .productTitle {
+    font-size: 1.3em;
+    font-weight: bold;
+    flex: 1;
+    text-align: start;
+    padding: 10px;
+    border-left: 1px solid #ddd;
+    margin: auto 20px;
+  }
+  
+  .productPrice {
+    color: #ee8108;
+    font-weight: bold;
+    flex: 1;
+    text-align: start;
+    font-size: 1.2em;
+    padding: 10px;
+  }
+  
+  .quantityControls {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: space-evenly;
+  }
+  .quantityControls button {
+    border: none;
+    font-size: 2em;
+    color: #ee8108;
+    padding: 0px;
+    margin: 0 10px;
+    cursor: pointer;
+  }
+  .productCheckout{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+  }
+  
+  .totalPrice {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #0f0f0f;
+  }
+  .checkoutBtn {
+    background-color: #ee8108;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+
+  }
+  .checkoutBtn:hover { 
+    background-color: #ad7330;
+    color: #fff;
+    font-size: 1.1em;
+}
+
+  .removeButton {
+    color: #e74c3c;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align:center;
+    flex: 1;
+    padding: 10px;
+    margin: auto 20px;
+    cursor: pointer;
+  }

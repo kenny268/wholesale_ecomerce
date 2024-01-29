@@ -1,40 +1,53 @@
 /* Login.module.css */
-
 .form {
-    display: grid;
-    gap: 1rem;
+    display: block;
+    /* gap: 10px; */
     max-width: 300px; /* Set a maximum width for the form */
-    margin: 30px auto auto auto; /* Center the form horizontally */
-    padding: 50px; /* Add some padding */
+    margin: 150px auto auto auto; /* Center the form horizontally */
+    padding: 20px;
     border: 1px solid #ccc; /* Add a border to the form */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: 450px;
+    /* height: 450px; */
+  }
+
+  .form div{
+    display: block;
+    width: 80%;
+    max-height: fit-content;
+    padding: 10px;
+    box-shadow: 10px 2x 3px #000;
   }
   
-.label {
-    grid-column: span 2; /* Span both columns for a full-width label */
-    align-self: center;
+.form div label {
+    /* grid-column: span 1;  */
+    /* align-self: center; */
     font-weight: bold;
-
+    font-size: 1.3em;
+    align-self: start;
+    
   }
 
-.input {
-    grid-column: span 2; /* Span both columns for a full-width input field */
-    /* padding: 5px; */
-    border: 1px solid #ccc; /* Add a border to the input fields */
+.form div input {
+    /* grid-column: span 1;  */
+    border: 1px solid #ccc; 
     border-radius: 4px;
     height: 50px;
-    box-sizing: border-box; /* Make sure the input fields don't break on small screens */
+    box-sizing: border-box; 
+    padding: 5px;
   }
 
 .button {
-    grid-column: span 2;
-    padding: 0.75rem;
+    /* grid-column: span 2; */
+    padding: 5px;
     background-color: #007bff;
     color: #fff;
     border: none;
     cursor: pointer;
-    border-radius: 4px; /* Optional: Add border-radius to the button */
+    border-radius: 4px; 
+    width: 90%;
+    height: 50px;
+    font-size: 1.5em;
+    font-weight: bold;
   }
   
 .button:hover {

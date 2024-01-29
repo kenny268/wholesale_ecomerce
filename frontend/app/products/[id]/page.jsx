@@ -2,7 +2,7 @@
 import React from 'react'
 import Footer from '@/app/components/footer/Footer';
 import Navbar from '@/app/components/Navbar';
-import CategorySearch from '@/app/category/category';
+import CategorySearch from '@/app/products/category/categorySearchById';
 
   async function getProducts(id) {
     const response = await fetch(`http://localhost:4000/products/category/${id}`,{
@@ -24,7 +24,7 @@ async function Category({params}) {
   return (
     <div>
       <Navbar/>
-      <CategorySearch products={products}/>
+        <CategorySearch products={products}/>
       <Footer/>
     </div>
     

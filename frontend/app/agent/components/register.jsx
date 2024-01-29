@@ -6,54 +6,23 @@ import Page3 from '@/app/agent/components/forms/shippingFulfillmentData'
 import Page4 from '@/app/agent/components/forms/legalAgreements'
 import Dashboard from '@/app/agent/dashboard/page';
 import {useFormContext} from '../context/hooks/useContextHooks'
+import Navbar from './forms/navbar'
 
 
 const RegistrationForm = () => {
     const {data} = useFormContext();
     const step =data.steps;
-
-    //console.log("step",steps);
-    //console.log(data);
-
-    if(step==0){
-        return (
-            <>
-             <Page1 />
-            </>
-            
-         );
-        
-    }else if(step==1){    
-        return (
-            <>
-            <Page2 /> 
-            </>
-            
-        );
-        
-    }else if(step==2){    
-        return (
-            <>
-            <Page3 /> 
-            </>
-            
-        );    
-    }else if(step == 3){
-        return (
-            <>
-            <Page4 /> 
-            </>
-            
-        );
-
-    }else if(step==4){    
-        return (
-            <>
-            <Dashboard /> 
-            </>
-            
-        );
-    }        
+    
+    return (
+        <div >
+        {/* <Navbar/> */}
+        {step==0 && <Page1 />}
+        {step==1 && <Page2 />}
+        {step==2 && <Page3 />}
+        {step==3 && <Page4 />}
+        {step==4 && <Dashboard /> }
+        </div>
+    )
 }
   
 export default RegistrationForm;

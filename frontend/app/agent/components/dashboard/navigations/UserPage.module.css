@@ -1,0 +1,57 @@
+/* styles.module.css */
+
+.userProfile {
+    position:fixed;    
+    background-color: rgba(207, 140, 14, 0.712);
+    padding: 10px;
+    top: 103px;
+    right: 2px;
+    box-shadow: 0px 0px 5px 0px #000;
+  }
+
+  .userProfile h2{
+    color: #000;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding: 20px;
+  }
+  
+  .userProfileImage {
+    margin-right: 5px auto;
+  }
+  
+  .userProfileImage img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .userProfileDetails {
+    
+    color: blue;
+    padding: 20px; /* Add padding for better spacing */
+    box-sizing: border-box; /* Include padding in the total width */
+    background-color: antiquewhite;
+    box-shadow: 1px 2px 2px #000;
+}
+  
+  .userProfileDetails h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .userProfileDetails p {
+    margin-bottom: 5px;
+    font-size: 1em;
+  }
+  .userProfileDetails span {
+    cursor: pointer;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+    color: #fff;
+    background-color: rgb(219, 32, 32);
+    padding: 5px 10px;
+    border-radius: 2px;
+  }

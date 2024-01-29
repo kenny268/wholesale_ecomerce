@@ -15,37 +15,36 @@ function Login() {
   }
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-        <label htmlFor="email" className={styles.label}>Email</label>
-        <input 
-          className={styles.input}
-          type="email"
-          name="email" 
-          id="email" 
-          value={email}
-          // placeholder='Email...'
-          onChange={(e) => setEmail(e.target.value)}
-          required
-         />
-    
-      
-        <label htmlFor="password" className={styles.label}>Password</label>
-        <input 
-          className={styles.input}
-          type="password" 
-          name="password" 
-          id="password" 
-          value={password}
-          // pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
-          // placeholder='Password...'
-          onChange={(e) => setPassword(e.target.value)}
-          required
+        <div>
+          <label htmlFor="email" className={styles.label}>Email</label>
+          <input 
+            type="email"
+            name="email" 
+            id="email" 
+            value={email}
+            // placeholder='Email...'
+            onChange={(e) => setEmail(e.target.value)}
+            required
           />
-  
+        </div>
 
-      
-      <button type="submit" className={`${styles.button}`}>Login</button>
-     
+        <div>
+          <label htmlFor="password" className={styles.label}>Password</label>
+          <input 
+            type="password" 
+            name="password" 
+            id="password" 
+            value={password}
+            // pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
+            // placeholder='Password...'
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            />  
+        </div>   
 
+        <div>
+          <button type="submit" className={`${styles.button}`}>Login</button>
+        </div>
     </form>
   )
 }
