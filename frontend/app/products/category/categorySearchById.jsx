@@ -1,26 +1,28 @@
-'use client'
-import React from 'react'
-import ProductCard from '../product'
+'use client';
+import React from 'react';
+import ProductCard from '../product';
 import styles from '@/app/products/prooduct.module.css';
 
 
+// eslint-disable-next-line require-jsdoc, react/prop-types
 function CategorySearch({products}) {
+  if (!products) {
+    return (
+      <div>
+        
+        <h1>Loading...</h1>
+      </div>);
+  }
 
-
-  if(!products) return (
-    <div>
-      <h1>Loading...</h1>
-    </div>)
-    
   return (
     <div className={styles.productList}>
-      {products && products.map(product => (
+      {products && products.map((product) => (
         <div key={product.id} >
-            <ProductCard product={product}/>
+          <ProductCard product={product}/>
         </div>
       ))}
     </div>
-  )
+  );
 }
 
-export default CategorySearch
+export default CategorySearch;

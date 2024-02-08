@@ -10,6 +10,7 @@ const ShoppingCart = () => {
     // Add more products as needed
   ]);
 
+
   const updateQuantity = (productId, newQuantity) => {
     const updatedCart = cart.map((item) => {
       if (item.id === productId) {
@@ -28,6 +29,8 @@ const ShoppingCart = () => {
     const updatedCart = cart.filter((item) => item.id !== productId);
     setCart(updatedCart);
   };
+
+
 
   return (
     <div>
@@ -63,6 +66,7 @@ const ShoppingCart = () => {
       </div>
     </div>
   );
+
 };
 
 export default ShoppingCart;

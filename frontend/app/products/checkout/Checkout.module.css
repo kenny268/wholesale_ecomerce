@@ -1,0 +1,141 @@
+.card{
+    width: 100%;
+    margin: 20px 10px;
+}
+.cardForm{
+    width: fit-content;
+    margin: 10px auto;
+    padding: 3px ;
+}
+.formGroup{
+    display: block;
+}
+.formGroup input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    font-size: 16px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    transition: border-color.2s ease;
+
+}
+.row{
+    display: flex;
+    padding: 3px;
+}
+.row input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    font-size: 16px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    transition: border-color.2s ease;
+}
+
+.btn{
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    background-color: rgb(63, 63, 197);
+    color: white;
+    border-radius: 4px;
+    outline: none;
+    font-size: 16px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    transition: border-color.2s ease;
+}
+/* Page  */
+.Overview{
+    display: flex;
+    flex-direction: column;
+    width: 98%;
+    margin: 100px auto;
+    justify-content: center; 
+    align-items: center;  
+    box-shadow: 1px 1px 1px 1px #000;
+
+}
+.Overview h1{
+    text-align: center;
+    font-size: 2em;
+    padding: 5px;
+}
+.Form{
+    display: flex;
+    flex-direction: column;   
+    padding: 5px;
+    box-shadow: 1px 1px 1px 1px #000;
+    width: 60%;
+    margin-bottom: 1px;
+}
+.Form div{
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    
+}
+.inputLabel{
+    padding: 2px;
+    flex: 1;
+    font-size: 1.3em;
+    text-align: center;
+    
+}
+.inputLabel input{
+    text-align: center;
+}
+
+
+/* Mpesa Form */
+
+.MpesaForm{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+}
+.MpesaForm div{
+    display: flex;
+    flex-direction: column;
+}
+
+.MpesaForm input{
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    font-size: 16px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    transition: border-color.2s ease;
+}
+
+.MpesaForm button{
+    width: 60%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    background-color: rgb(63, 63, 197);
+    color: white;
+    border-radius: 4px;
+    outline: none;
+    font-size: 16px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    transition: border-color.2s ease;
+}
+
+.MpesaForm h2{
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+    padding: 5px;
+
+}

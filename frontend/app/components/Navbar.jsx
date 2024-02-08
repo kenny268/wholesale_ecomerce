@@ -1,15 +1,40 @@
 'use client'
 // components/Navbar.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Navbar.module.css';
 import { FaSearch, FaShoppingCart, FaUser } from 'react-icons/fa';
 import { FiList } from "react-icons/fi";
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Navbar = () => {
+const Navbar = ({data}) => {
   const [showShortCut,setShowShortCut] = useState(false)
   const toggleShowShortCut = () =>setShowShortCut(!showShortCut)
+  
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredData, setFilteredData] = useState(null);
+  
+  // console.log('filtered data',filteredData)
+  // console.log(data)
+
+  useEffect(() => {
+
+    if (data && searchTerm.trim() !== '') {
+
+      const filteredData = data.filter(item =>
+        item.productName && item.productName.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredData(filteredData);
+    } else {
+      setFilteredData([]);
+    }
+  }, [data, searchTerm]);
+
+  const handleInputChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+  
 
   return (
     <div>
@@ -27,7 +52,12 @@ const Navbar = () => {
         </div>
 
         <form className={styles.search}>
-          <input type="text" placeholder="Search products..." />
+          <input 
+            type="text" 
+            placeholder="Search products..." 
+            value={searchTerm}
+            onChange={handleInputChange}
+          />
           <span className={styles.searchIcon}><FaSearch /></span>
         </form>
         <div className={styles.icons}>     
@@ -78,9 +108,18 @@ const Navbar = () => {
           </li>
         </ul>
       </div>}
+      
+      {/* Serch Bar */}
+      {searchTerm && <div className={styles.searchResults} >
+      <ul >
+        {filteredData && filteredData.map((item, index) => (
+          <li key={item._id}>
+            <Link href={`/products/description/${item._id}`} key={index}>{item.productName} - {item.type}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>}
   </div>
-
-
   );
 };
 

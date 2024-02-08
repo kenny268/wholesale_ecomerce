@@ -1,15 +1,14 @@
 'use client'
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import PaymentForm from './paymentForm';
+import PaymentForm from './cardForm';
+import styles from './Checkout.module.css'
+import MpesaForm from './mpesaForm';
 
 const Checkout = () => {
   const router = useRouter();
   const [paymentMethod, setPaymentMethod] = useState('');
-  const [mpesaDetails, setMpesaDetails] = useState({
-    phoneNumber: '',
-    amount: 0, // Set the default amount
-  })
+  
 
   const handlePayment = () => {
     // Perform payment processing logic based on the selected payment method
@@ -23,25 +22,7 @@ const Checkout = () => {
   const renderPaymentForm = () => {
     if (paymentMethod === 'mpesa') {
       return (
-        <div>
-        <h2>M-Pesa Payment Details</h2>
-        <label>
-          Phone Number:
-          <input
-            type="text"
-            value={mpesaDetails.phoneNumber}
-            onChange={(e) => setMpesaDetails({ ...mpesaDetails, phoneNumber: e.target.value })}
-          />
-        </label>
-        <label>
-          Amount:
-          <input
-            type="number"
-            value={mpesaDetails.amount}
-            onChange={(e) => setMpesaDetails({ ...mpesaDetails, amount: e.target.value })}
-          />
-        </label>
-      </div>
+       <MpesaForm/>
       );
     } else if (paymentMethod === 'card') {
       return (
@@ -53,22 +34,24 @@ const Checkout = () => {
   };
 
   return (
-    <div>
+    <div className={styles.Overview}>
       <h1>Checkout</h1>
 
-      <form>
-        <label>
+      <form className={styles.Form}>
+        <div>
+        <label className={styles.inputLabel}>
           <input
             type="radio"
             name="paymentMethod"
             value="card"
+            
             checked={paymentMethod === 'card'}
             onChange={() => setPaymentMethod('card')}
           />
           Pay with Card
         </label>
 
-        <label>
+        <label className={styles.inputLabel}>
           <input
             type="radio"
             name="paymentMethod"
@@ -78,10 +61,11 @@ const Checkout = () => {
           />
           Pay with M-Pesa
         </label>
+        </div>
 
-        <button type="button" onClick={handlePayment}>
+        {/* <button type="button" onClick={handlePayment}>
           Proceed to Pay
-        </button>
+        </button> */}
       </form>
 
       {renderPaymentForm()}

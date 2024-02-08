@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Cards from 'react-credit-cards-2';
 import 'react-credit-cards-2/dist/es/styles-compiled.css';
+import styles from './Checkout.module.css';
 
 
 
@@ -15,33 +16,17 @@ const PaymentForm = () => {
     focus: '',
   });
 
-  const handleCallback = ({ issuer }, isValid) => {
-    if (isValid) {
-      setState({ issuer });
-    }
-  };
-
-  const handleInputFocus = ({ target }) => {
+  const handleInputChange= (e) => {
+    const { name, value } = e.target;
     setState({
-      focused: target.name
+      ...state,
+      [name]: value,
     });
   };
 
-  const handleInputChange = ({ target }) => {
-    if (target.name === "number") {
-      target.value = formatCreditCardNumber(target.value);
-    } else if (target.name === "expiry") {
-      target.value = formatExpirationDate(target.value);
-    } else if (target.name === "cvc") {
-      target.value = formatCVC(target.value);
-    }
-
-    setState({ [target.name]: target.value });
-  };
 
   const handleSubmit = e => {
     e.preventDefault();
-    const { issuer } = state;
     const formData = [...e.target.elements]
       .filter(d => d.name)
       .reduce((acc, d) => {
@@ -53,71 +38,76 @@ const PaymentForm = () => {
     form.reset();
   };
 
+  console.log('',state)
+
   return (
-    <div>
+    <div className={styles.card}>
       <Cards
         number={state.number}
         expiry={state.expiry}
         cvc={state.cvc}
         name={state.name}
         focused={state.focus}
+        styles = {{width:'100%'}}
       />
-      <form  >
-            <div className="form-group">
+
+      <div className={styles.cardForm}>
+      <form onSubmit={handleSubmit} >
+            <div className={styles.formGroup}>
               <input
-                type="tel"
+                type="number"
                 name="number"
-                className="form-control"
+                className={styles.formControl}
                 placeholder="Card Number"
-                pattern="[\d| ]{16,22}"
                 required
+                pattern="[\d| ]{16,22}"
                 onChange={handleInputChange}
-                onFocus={handleInputFocus}
               />
-              <small>E.g.: 49..., 51..., 36..., 37...</small>
+
+             <p><small>E.g.: 49..., 51..., 36..., 37...</small></p> 
             </div>
-            <div className="form-group">
+            <div className={styles.formGroup}>
               <input
                 type="text"
                 name="name"
-                className="form-control"
+                className={styles.formControl}
                 placeholder="Name"
                 required
                 onChange={handleInputChange}
-                onFocus={handleInputFocus}
+                
               />
             </div>
-            <div className="row">
-              <div className="col-6">
+            <div className={styles.row}>
+              <div className={styles.col6}>
                 <input
                   type="tel"
                   name="expiry"
-                  className="form-control"
+                  className={styles.formControl}
                   placeholder="Valid Thru"
                   pattern="\d\d/\d\d"
                   required
                   onChange={handleInputChange}
-                  onFocus={handleInputFocus}
                 />
               </div>
-              <div className="col-6">
+              <div className={styles.col6}>
                 <input
                   type="tel"
                   name="cvc"
-                  className="form-control"
+                  className={styles.formControl}
                   placeholder="CVC"
                   pattern="\d{3,4}"
                   required
                   onChange={handleInputChange}
-                  onFocus={handleInputFocus}
                 />
               </div>
             </div>
             {/* <input type="hidden" name="issuer" value={issuer} /> */}
-            <div className="form-actions">
-              <button className="btn btn-primary btn-block">PAY</button>
+            <div className={styles.formActions}>
+              <button className={styles.btn}>PAY</button>
             </div>
-          </form>
+      </form>
+      
+      </div>
     </div>
   );
 }

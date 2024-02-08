@@ -170,3 +170,22 @@
   font-size: 1.5em;
   font-weight: 800;
 }
+
+.searchResults{
+  display: flex;
+  /* flex-direction: column; */
+  max-width: 60%;
+  background-color: aqua;
+  z-index: 2;
+  position:absolute;
+  top: 145px;
+  left: 20%;
+  right: 20%;
+}
+.searchResults ul{
+  padding: 20px;
+}
+.searchResults ul li{
+  text-decoration: none;
+  list-style: none;
+}
